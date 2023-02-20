@@ -19,6 +19,7 @@
         href="#"
         class="pagination__link"
         :class="{ 'pagination__link--current': pageNumber === page }"
+        @click.prevent="paginate(pageNumber)"
       >
         {{ pageNumber }}
       </a>
@@ -45,6 +46,10 @@ export default {
       return Math.ceil(this.count / this.perPage);
     },
   },
-  methods: {},
+  methods: {
+    paginate(page) {
+      this.$emit("update:page", page);
+    },
+  },
 };
 </script>
